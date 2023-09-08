@@ -25,7 +25,7 @@ export const parseSearchMusicsBody = (body: {
   return results;
 };
 
-export async function searchMusics(query: string): Promise<MusicVideo[]> {
+export async function searchMusics(query: string, headers: any): Promise<MusicVideo[]> {
   const response = await got.post(
     'https://music.youtube.com/youtubei/v1/search?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30',
     {
@@ -38,6 +38,7 @@ export async function searchMusics(query: string): Promise<MusicVideo[]> {
         'User-Agent':
           'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
         origin: 'https://music.youtube.com',
+        ...options
       },
     }
   );
